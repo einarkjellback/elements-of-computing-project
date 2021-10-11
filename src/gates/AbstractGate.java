@@ -33,6 +33,6 @@ public abstract class AbstractGate {
     }
 
     public static Gate nand() {
-        return null;
+        return fromFunction(2, 1, booleans -> List.of(!(booleans.get(0) && booleans.get(1))));
     }
 }

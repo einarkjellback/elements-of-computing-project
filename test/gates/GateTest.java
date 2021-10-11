@@ -101,7 +101,7 @@ public final class GateTest {
         );
         Gate nand = AbstractGate.nand();
         for (int i = 0; i < inputs.size(); i++) {
-            assertThat(nand.input(inputs.get(i)), is(expected.get(i)));
+            assertThat(nand.input(inputs.get(i)), is(List.of(expected.get(i))));
         }
     }
 
