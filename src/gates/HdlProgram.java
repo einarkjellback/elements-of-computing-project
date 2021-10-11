@@ -51,6 +51,7 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
 
     @Override
     public ConnectToOut connect(Pin from) {
+        connections.put(from, output.get(0));
         return this;
     }
 
