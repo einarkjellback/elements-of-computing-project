@@ -13,8 +13,6 @@ public final class HdlProgramTest {
         Pin constPin = constGate.getOut(0);
         final Gate nand = new NandGate();
 
-//        HdlProgram hdl = nand.getIn(0).receive(out);
-
         Gate not = HdlProgram.getInstance()
                 .setInput(in)
                 .setOutput(out)
