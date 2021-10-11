@@ -5,7 +5,5 @@ public interface AddPart {
 
     AddPart connect(Pin from, int pinIndex);
 
-    AddPart connect(boolean constantSignal, int pinIndex);
-
     ConnectToOut connectToOut();
 }
