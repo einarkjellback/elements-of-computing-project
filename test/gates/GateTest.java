@@ -64,7 +64,7 @@ public final class GateTest {
         );
 
         for (TestCase c : cases) {
-            Gate gate = AbstractGate.fromFunction(3, c.f);
+            Gate gate = AbstractGate.fromFunction(3, c.expected.get(0).size(), c.f);
             for (int i = 0; i < inputs.size(); i++) {
                 List<Boolean> actual = gate.input(inputs.get(i));
                 assertThat("Failed case: " + c.name, actual, is(c.expected.get(i)));
@@ -73,9 +73,19 @@ public final class GateTest {
     }
 
     @Test public void
-    given_nInputPins_when_inputNotNDimensions_then_throwException() {
-        Gate gate = AbstractGate.fromFunction(3, b -> b);
+    given_nInputPins_when_inputArgumentNotNDimensions_then_throwException() {
+        Gate gate = AbstractGate.fromFunction(3, 3, b -> b);
         assertThrows(IllegalArgumentException.class, () -> gate.input(List.of(true, true)));
+    }
+
+
+    @Test public void
+    given_nOutputPins_when_functionReturnsListNotOfSizeN_then_throwsException() {
+        List<Integer> outputDim = List.of(1, 2, 3);
+        for (int dim : outputDim) {
+            Gate gate = AbstractGate.fromFunction(4, dim, b -> b);
+            assertThrows(IllegalArgumentException.class, () -> gate.input(List.of(true, true, false, true)));
+        }
     }
 
     private class TestCase {
