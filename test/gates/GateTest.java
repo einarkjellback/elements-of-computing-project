@@ -105,7 +105,7 @@ public final class GateTest {
         }
     }
 
-    private class TestCase {
+    private static class TestCase {
         private final String name;
         private final Function<List<Boolean>, List<Boolean>> f;
         private final List<List<Boolean>> expected;
