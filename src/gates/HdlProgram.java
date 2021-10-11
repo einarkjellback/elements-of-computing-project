@@ -1,6 +1,7 @@
 package gates;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectToOut {
 
     final List<Pin> input = new ArrayList<>();
+    private final Collection<Pin> output = new ArrayList<>();
 
     private HdlProgram() {}
 
@@ -26,6 +28,7 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
 
     @Override
     public AddPart setOutput(Pin... outputPins) {
+        Collections.addAll(this.output, outputPins);
         return this;
     }
 
