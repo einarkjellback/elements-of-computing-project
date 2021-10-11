@@ -50,7 +50,7 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
     }
 
     @Override
-    public ConnectToOut connect(Pin from, Pin out) {
+    public ConnectToOut connect(Pin from) {
         return this;
     }
 

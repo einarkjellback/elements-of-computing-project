@@ -1,7 +1,7 @@
 package gates;
 
 public interface ConnectToOut {
-    ConnectToOut connect(Pin from, Pin out);
+    ConnectToOut connect(Pin from);
 
     Gate build();
 }

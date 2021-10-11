@@ -13,4 +13,9 @@ public class ConstantGate implements Gate {
     public Pin getOut(int i) {
         return null;
     }
+
+    @Override
+    public Pin getIn(int i) {
+        return null;
+    }
 }

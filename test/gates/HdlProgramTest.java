@@ -21,6 +21,7 @@ public final class HdlProgramTest {
                 .connect(in, 0)
                 .connect(constPin, 1)
                 .connectToOut()
+                .connect(nand.getOut(0))
                 .build();
 
         assertThat(not.input(false), is(true));
