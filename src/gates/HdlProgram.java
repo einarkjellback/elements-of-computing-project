@@ -1,9 +1,6 @@
 package gates;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * A class that follows the builder pattern for building chips. It is supposed to emulate Hardware Description
@@ -13,6 +10,7 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
 
     private final List<Pin> input = new ArrayList<>();
     private final Collection<Pin> output = new ArrayList<>();
+    private final Deque<Gate> parts = new ArrayDeque<>();
 
     private HdlProgram() {}
 
@@ -34,6 +32,7 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
 
     @Override
     public AddPart addPart(Gate gate) {
+        this.parts.addFirst(gate);
         return this;
     }
 
