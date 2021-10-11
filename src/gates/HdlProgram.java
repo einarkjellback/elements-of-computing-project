@@ -1,10 +1,16 @@
 package gates;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * A class that follows the builder pattern for building chips. It is supposed to emulate Hardware Description
  * Language syntax used in the specification of chips.
  */
 public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectToOut {
+
+    final List<Pin> input = new ArrayList<>();
 
     private HdlProgram() {}
 
@@ -14,6 +20,7 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
 
     @Override
     public SetOutput setInput(Pin... inputPins) {
+        Collections.addAll(input, inputPins);
         return this;
     }
 
