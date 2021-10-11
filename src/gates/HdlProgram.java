@@ -11,7 +11,7 @@ import java.util.List;
  */
 public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectToOut {
 
-    final List<Pin> input = new ArrayList<>();
+    private final List<Pin> input = new ArrayList<>();
     private final Collection<Pin> output = new ArrayList<>();
 
     private HdlProgram() {}
