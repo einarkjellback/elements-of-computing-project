@@ -1,5 +1,7 @@
 package gates;
 
+import jdk.internal.jimage.ImageStream;
+
 import java.util.*;
 
 /**
@@ -11,6 +13,7 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
     private final List<Pin> input = new ArrayList<>();
     private final Collection<Pin> output = new ArrayList<>();
     private final Deque<Gate> parts = new ArrayDeque<>();
+    private Map<Pin, Pin> connections = new HashMap<>();
 
     private HdlProgram() {}
 
@@ -38,6 +41,8 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
 
     @Override
     public AddPart connect(Pin from, int pinIndex) {
+        Pin currentPin = parts.peekFirst().getIn(pinIndex);
+        this.connections.put(from, currentPin);
         return this;
     }
 
