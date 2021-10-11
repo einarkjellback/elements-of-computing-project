@@ -6,4 +6,6 @@ package gates;
  */
 public interface Gate {
     boolean input(boolean b);
+
+    Pin getOut(int i);
 }
