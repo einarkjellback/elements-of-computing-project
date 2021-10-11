@@ -8,4 +8,6 @@ public interface Gate {
     boolean input(boolean b);
 
     Pin getOut(int i);
+
+    Pin getIn(int i);
 }
