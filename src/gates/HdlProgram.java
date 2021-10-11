@@ -1,7 +1,5 @@
 package gates;
 
-import jdk.internal.jimage.ImageStream;
-
 import java.util.*;
 
 /**
@@ -66,6 +64,11 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
 
             @Override
             public Pin getOut(int i) {
+                return null;
+            }
+
+            @Override
+            public Pin getIn(int i) {
                 return null;
             }
         };
