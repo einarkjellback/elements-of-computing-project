@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class GateTest {
     @Test
@@ -63,12 +64,18 @@ public final class GateTest {
         );
 
         for (TestCase c : cases) {
-            Gate gate = AbstractGate.fromFunction(c.f);
+            Gate gate = AbstractGate.fromFunction(3, c.f);
             for (int i = 0; i < inputs.size(); i++) {
                 List<Boolean> actual = gate.input(inputs.get(i));
                 assertThat("Failed case: " + c.name, actual, is(c.expected.get(i)));
             }
         }
+    }
+
+    @Test public void
+    given_nInputPins_when_inputNotNDimensions_then_throwException() {
+        Gate gate = AbstractGate.fromFunction(3, b -> b);
+        assertThrows(IllegalArgumentException.class, () -> gate.input(List.of(true, true)));
     }
 
     private class TestCase {
