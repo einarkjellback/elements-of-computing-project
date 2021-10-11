@@ -33,11 +33,6 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
     }
 
     @Override
-    public AddPart connect(boolean constantSignal, int pinIndex) {
-        return null;
-    }
-
-    @Override
     public ConnectToOut connectToOut() {
         return null;
     }
