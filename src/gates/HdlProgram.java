@@ -59,8 +59,8 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectTo
     public Gate build() {
         return new Gate() {
             @Override
-            public boolean input(boolean b) {
-                return false;
+            public List<Boolean> input(List<Boolean> b) {
+                return List.of(false);
             }
 
             @Override

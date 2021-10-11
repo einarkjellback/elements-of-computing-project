@@ -1,9 +1,11 @@
 package gates;
 
+import java.util.List;
+
 public class NandGate implements Gate {
     @Override
-    public boolean input(boolean b) {
-        return false;
+    public List<Boolean> input(List<Boolean> b) {
+        return List.of(false);
     }
 
     @Override

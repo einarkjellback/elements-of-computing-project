@@ -1,0 +1,85 @@
+package gates;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+public final class GateTest {
+    @Test
+    public void
+    test_fromFunctionConstructor() {
+        List<List<Boolean>> inputs = List.of(
+                        List.of(true, false, false),
+                        List.of(false, false, false),
+                        List.of(true, true, true)
+        );
+        List<TestCase> cases = List.of(
+                new TestCase(
+                        "Constant false signal",
+                        booleans -> List.of(false),
+                        List.of(
+                                List.of(false),
+                                List.of(false),
+                                List.of(false)
+                        )
+                ),
+                new TestCase(
+                        "Logical Not",
+                        booleans -> booleans.stream().map(b -> !b).collect(Collectors.toList()),
+                        List.of(
+                                List.of(false, true, true),
+                                List.of(true, true, true),
+                                List.of(false, false, false)
+                        )
+                ),
+                new TestCase(
+                        "Accumulative And",
+                        booleans -> List.of(booleans.stream().reduce(true, Boolean::logicalAnd)),
+                        List.of(
+                                List.of(false),
+                                List.of(false),
+                                List.of(true)
+                        )
+                ),
+                new TestCase(
+                        "Set first to true",
+                        booleans -> {
+                            List<Boolean> bCopy = new ArrayList<>(booleans);
+                            bCopy.set(0, true);
+                            return bCopy;
+                        },
+                        List.of(
+                                List.of(true, false, false),
+                                List.of(true, false, false),
+                                List.of(true, true, true)
+                        )
+                )
+        );
+
+        for (TestCase c : cases) {
+            Gate gate = AbstractGate.fromFunction(c.f);
+            for (int i = 0; i < inputs.size(); i++) {
+                List<Boolean> actual = gate.input(inputs.get(i));
+                assertThat("Failed case: " + c.name, actual, is(c.expected.get(i)));
+            }
+        }
+    }
+
+    private class TestCase {
+        private final String name;
+        private final Function<List<Boolean>, List<Boolean>> f;
+        private final List<List<Boolean>> expected;
+
+        TestCase(String name, Function<List<Boolean>, List<Boolean>> f, List<List<Boolean>> expected) {
+            this.name = name;
+            this.f = f;
+            this.expected = expected;
+        }
+    }
+}

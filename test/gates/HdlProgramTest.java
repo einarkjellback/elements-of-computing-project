@@ -1,6 +1,9 @@
 package gates;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -24,7 +27,7 @@ public final class HdlProgramTest {
                 .connect(nand.getOut(0))
                 .build();
 
-        assertThat(not.input(false), is(true));
-        assertThat(not.input(true), is(false));
+        assertThat(not.input(List.of(false)), is(true));
+        assertThat(not.input(List.of(true)), is(false));
     }
 }
