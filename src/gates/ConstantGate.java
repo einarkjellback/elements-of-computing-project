@@ -8,4 +8,9 @@ public class ConstantGate implements Gate {
     public boolean input(boolean b) {
         return false;
     }
+
+    @Override
+    public Pin getOut(int i) {
+        return null;
+    }
 }
