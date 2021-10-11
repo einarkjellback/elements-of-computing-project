@@ -9,7 +9,7 @@ import java.util.*;
 public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectToOut {
 
     private final List<Pin> input = new ArrayList<>();
-    private final Collection<Pin> output = new ArrayList<>();
+    private final List<Pin> output = new ArrayList<>();
     private final Deque<Gate> parts = new ArrayDeque<>();
     private Map<Pin, Pin> connections = new HashMap<>();
 
