@@ -88,6 +88,23 @@ public final class GateTest {
         }
     }
 
+    @Test public void
+    test_nandGate() {
+        List<List<Boolean>> inputs = List.of(
+                List.of(true, true),
+                List.of(true, false),
+                List.of(false, true),
+                List.of(false, false)
+        );
+        List<Boolean> expected = List.of(
+                false, true, true, true
+        );
+        Gate nand = AbstractGate.nand();
+        for (int i = 0; i < inputs.size(); i++) {
+            assertThat(nand.input(inputs.get(i)), is(expected.get(i)));
+        }
+    }
+
     private class TestCase {
         private final String name;
         private final Function<List<Boolean>, List<Boolean>> f;

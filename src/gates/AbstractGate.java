@@ -31,4 +31,8 @@ public abstract class AbstractGate {
             }
         };
     }
+
+    public static Gate nand() {
+        return null;
+    }
 }
