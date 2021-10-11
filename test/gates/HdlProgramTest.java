@@ -26,5 +26,6 @@ public final class HdlProgramTest {
                 .build();
 
         assertThat(not.input(false), is(true));
+        assertThat(not.input(true), is(false));
     }
 }
