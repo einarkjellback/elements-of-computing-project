@@ -4,7 +4,7 @@ package gates;
  * A class that follows the builder pattern for building chips. It is supposed to emulate HDL-like syntax for the
  * specification of chips.
  */
-public final class HdlProgram implements SetInput, SetOutput, AddPart, Connect, ConnectToOut {
+public final class HdlProgram implements SetInput, SetOutput, AddPart, ConnectToOut {
 
     private HdlProgram() {}
 
@@ -49,11 +49,6 @@ public final class HdlProgram implements SetInput, SetOutput, AddPart, Connect, 
 
     @Override
     public Gate build() {
-        return null;
-    }
-
-    @Override
-    public Connect connect() {
         return null;
     }
 }
