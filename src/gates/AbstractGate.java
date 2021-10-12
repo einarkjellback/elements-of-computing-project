@@ -37,6 +37,6 @@ public abstract class AbstractGate {
     }
 
     public static Gate not() {
-        return null;
+        return fromFunction(1, 1, booleans -> List.of(!booleans.get(0)));
     }
 }
