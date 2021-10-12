@@ -106,6 +106,19 @@ public final class GateTest {
         }
     }
 
+    @Test public void
+    test_notGate() {
+        List<Boolean> inputs = List.of(true, false);
+        List<Boolean> expected = List.of(false, true);
+        Gate not = AbstractGate.not();
+
+        for (int i = 0; i < inputs.size(); i++) {
+            List<Boolean> actual = not.input(List.of(inputs.get(i)));
+
+            assertThat(actual, is(List.of(expected.get(i))));
+        }
+    }
+
     private static class TestCase {
         private final String name;
         private final Function<List<Boolean>, List<Boolean>> f;
