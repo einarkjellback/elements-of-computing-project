@@ -1,6 +1,7 @@
 package gates;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -32,6 +33,10 @@ public abstract class AbstractGate {
                 return null;
             }
         };
+    }
+
+    public static Gate fromMap(Map<Pin, List<Pin>> connections) {
+        return null;
     }
 
     public static Gate nand() {

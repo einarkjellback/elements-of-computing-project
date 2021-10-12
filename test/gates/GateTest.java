@@ -3,7 +3,9 @@ package gates;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -135,6 +137,30 @@ public final class GateTest {
 
         assertThrows(IndexOutOfBoundsException.class, () -> gate.getOut(-1));
         assertThrows(IndexOutOfBoundsException.class, () -> gate.getOut(outputDim));
+    }
+
+    @Test public void
+    given_mapOfConnectedGates_when_inputInvoked_then_returnCorrectBoolean() {
+        Map<Pin, List<Pin>> connections = new HashMap<>();
+
+        Gate constGate = AbstractGate.constantGate(false);
+        Gate nand = AbstractGate.nand();
+
+        Pin a = nand.getOut(1);
+        Pin falseSignal = constGate.getOut(0);
+
+        connections.put(falseSignal, List.of(a));
+
+        Gate not = AbstractGate.fromMap(connections);
+
+        List<Boolean> inputs = List.of(true, false);
+        List<Boolean> expected = List.of(false, true);
+
+        for (int i = 0; i < inputs.size(); i++) {
+            List<Boolean> actual = not.input(List.of(inputs.get(i)));
+
+            assertThat(actual, is(List.of(expected.get(i))));
+        }
     }
 
     private static class TestCase {
