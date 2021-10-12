@@ -3,9 +3,7 @@ package gates;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -116,6 +114,17 @@ public final class GateTest {
             List<Boolean> actual = not.input(List.of(inputs.get(i)));
 
             assertThat(actual, is(List.of(expected.get(i))));
+        }
+    }
+
+    @Test public void
+    test_constantGate() {
+        List<Boolean> constants = List.of(true, false);
+        for (boolean constant : constants) {
+            Gate gate = AbstractGate.constantGate(constant);
+            List<Boolean> actual = gate.input(List.of());
+
+            assertThat(actual, is(List.of(constant)));
         }
     }
 
