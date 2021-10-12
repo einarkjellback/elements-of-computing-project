@@ -128,6 +128,15 @@ public final class GateTest {
         }
     }
 
+    @Test public void
+    given_invalidIndex_when_getOutInvoked_then_exceptionThrown() {
+        final int outputDim = 3;
+        Gate gate = AbstractGate.fromFunction(2, outputDim, booleans -> List.of());
+
+        assertThrows(IndexOutOfBoundsException.class, () -> gate.getOut(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> gate.getOut(outputDim));
+    }
+
     private static class TestCase {
         private final String name;
         private final Function<List<Boolean>, List<Boolean>> f;

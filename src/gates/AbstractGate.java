@@ -1,6 +1,7 @@
 package gates;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 
 public abstract class AbstractGate {
@@ -22,6 +23,7 @@ public abstract class AbstractGate {
 
             @Override
             public Pin getOut(int i) {
+                Objects.checkIndex(i, outputDim);
                 return null;
             }
 
