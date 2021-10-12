@@ -41,6 +41,6 @@ public abstract class AbstractGate {
     }
 
     public static Gate constantGate(boolean constant) {
-        return null;
+        return fromFunction(0, 1, booleans -> List.of(constant));
     }
 }
