@@ -3,7 +3,9 @@ package gates;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -77,7 +79,6 @@ public final class GateTest {
         Gate gate = AbstractGate.fromFunction(3, 3, b -> b);
         assertThrows(IllegalArgumentException.class, () -> gate.input(List.of(true, true)));
     }
-
 
     @Test public void
     given_nOutputPins_when_functionReturnsListNotOfSizeN_then_throwsException() {
