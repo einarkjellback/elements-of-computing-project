@@ -146,7 +146,7 @@ public final class GateTest {
         Gate constGate = AbstractGate.constantGate(false);
         Gate nand = AbstractGate.nand();
 
-        Pin a = nand.getOut(1);
+        Pin a = nand.getIn(1);
         Pin falseSignal = constGate.getOut(0);
 
         connections.put(falseSignal, List.of(a));
