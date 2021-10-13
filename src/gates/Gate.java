@@ -12,4 +12,8 @@ public interface Gate {
     Pin getOut(int i);
 
     Pin getIn(int i);
+
+    List<Pin> allOutPins();
+
+    List<Pin> allInPins();
 }
