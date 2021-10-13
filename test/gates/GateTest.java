@@ -140,6 +140,15 @@ public final class GateTest {
     }
 
     @Test public void
+    given_invalidIndex_when_getInInvoked_then_exceptionThrown() {
+        final int outputDim = 3;
+        Gate gate = AbstractGate.fromFunction(2, outputDim, booleans -> List.of());
+
+        assertThrows(IndexOutOfBoundsException.class, () -> gate.getIn(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> gate.getIn(outputDim));
+    }
+
+    @Test public void
     given_mapOfConnectedGates_when_inputInvoked_then_returnCorrectBoolean() {
         Map<Pin, List<Pin>> connections = new HashMap<>();
 
