@@ -2,11 +2,13 @@ package gates;
 
 public class Pin {
 
-    public Pin(Gate owner) {
+    private final Gate owner;
 
+    public Pin(Gate owner) {
+        this.owner = owner;
     }
 
     public Gate getOwner() {
-        return null;
+        return owner;
     }
 }
