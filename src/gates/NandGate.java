@@ -15,6 +15,6 @@ public class NandGate implements Gate {
 
     @Override
     public Pin getIn(int i) {
-        return new Pin();
+        return new Pin(null);
     }
 }

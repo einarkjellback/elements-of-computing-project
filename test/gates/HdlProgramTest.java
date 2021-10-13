@@ -10,8 +10,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public final class HdlProgramTest {
     @Test public void
     notTest() {
-        final Pin in = new Pin();
-        final Pin out = new Pin();
+        final Pin in = new Pin(null);
+        final Pin out = new Pin(null);
         Gate constGate = new ConstantGate(false);
         Pin constPin = constGate.getOut(0);
         final Gate nand = new NandGate();

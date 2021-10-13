@@ -11,7 +11,7 @@ public abstract class AbstractGate implements Gate {
         this.outputDim = outputDim;
         in = new ArrayList<>(inputDim);
         for (int i = 0; i < inputDim; i++) {
-            in.add(new Pin());
+            in.add(new Pin(null));
         }
     }
 
