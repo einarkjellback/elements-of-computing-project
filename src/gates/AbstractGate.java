@@ -13,11 +13,15 @@ public abstract class AbstractGate implements Gate {
     }
 
     @Override
+    public Pin getIn(int i) {
+        return null;
+    }
+
+    @Override
     public Pin getOut(int i) {
         Objects.checkIndex(i, outputDim);
         return null;
     }
-
 
     public static Gate fromFunction(int inputDim, int outputDim, Function<List<Boolean>, List<Boolean>> f) {
         return new Gate() {
