@@ -6,6 +6,19 @@ import java.util.Objects;
 import java.util.function.Function;
 
 public abstract class AbstractGate implements Gate {
+    private final int outputDim;
+
+    private AbstractGate(int outputDim) {
+        this.outputDim = outputDim;
+    }
+
+    @Override
+    public Pin getOut(int i) {
+        Objects.checkIndex(i, outputDim);
+        return null;
+    }
+
+
     public static Gate fromFunction(int inputDim, int outputDim, Function<List<Boolean>, List<Boolean>> f) {
         return new Gate() {
             @Override
