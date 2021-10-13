@@ -1,8 +1,6 @@
 package gates;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 
 public abstract class AbstractGate implements Gate {
@@ -24,7 +22,7 @@ public abstract class AbstractGate implements Gate {
     }
 
     public static Gate fromFunction(int inputDim, int outputDim, Function<List<Boolean>, List<Boolean>> f) {
-        return new Gate() {
+        return new AbstractGate(outputDim) {
             @Override
             public List<Boolean> input(List<Boolean> input) {
                 if (input.size() != inputDim) {
@@ -37,17 +35,6 @@ public abstract class AbstractGate implements Gate {
                             + outputDim + " from function " + f + ", but was " + output.size());
                 }
                 return output;
-            }
-
-            @Override
-            public Pin getOut(int i) {
-                Objects.checkIndex(i, outputDim);
-                return null;
-            }
-
-            @Override
-            public Pin getIn(int i) {
-                return null;
             }
         };
     }
